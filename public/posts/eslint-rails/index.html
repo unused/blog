@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='JavaScript is trending and on its very fast paced run creating new projects, concepts and ideas, best practices, throwing everything away again and start from scratch. That is a very good thing and for good we have now pretty neat tools that take away the very complex work of setting up a new project, keeping us left with a few nuts and bolts to configure on a higher level. A great tool handling a complex JavaScript projects is a module bundler named webpack.'>
+
+<meta property='og:title' content='Add eslint to rails 5.1 • Christoph Lipautz'>
+<meta property='og:description' content='JavaScript is trending and on its very fast paced run creating new projects, concepts and ideas, best practices, throwing everything away again and start from scratch. That is a very good thing and for good we have now pretty neat tools that take away the very complex work of setting up a new project, keeping us left with a few nuts and bolts to configure on a higher level. A great tool handling a complex JavaScript projects is a module bundler named webpack.'>
+<meta property='og:url' content='http://unused.github.io/blog/posts/eslint-rails/'>
+<meta property='og:site_name' content='unused Blog on GitHub'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2017-08-06T12:47:15&#43;02:00'/><meta property='article:modified_time' content='2017-08-06T12:47:15&#43;02:00'/>
+
+<meta name="generator" content="Hugo 0.25.1" />
+
+  <title>Add eslint to rails 5.1 • Christoph Lipautz</title>
+  <link rel='canonical' href='http://unused.github.io/blog/posts/eslint-rails/'>
+  <link href='' rel='alternate' type='application/rss+xml' title='unused Blog on GitHub' />
+  <link rel='icon' href='/blog/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='/blog/css/main.d02777fd.css'>
+
+
+
+</head>
+
+
+<body class='page'>
+  <div class='site'>
+    <header id='header' class='header-container'>
+      <div class='site-header'>
+        <nav id='navmenu' aria-label='Main Menu'>
+  <ul class='main-menu'>
+    
+    <li>
+      <a href='/blog/'>Home</a>
+    </li>
+    
+    <li>
+      <a href='https://github.com/unused/blog'>Edit on GitHub</a>
+    </li>
+    
+  </ul>
+</nav>
+
+        <div class='site-info'>
+          
+          <p class='site-title title'>unused Blog on GitHub</p>
+          
+          <p class='site-description'>Posts about Linux, (web) development, and other stuff.</p>
+        </div>
+      </div>
+    </header>
+
+
+<main class='main'>
+  <article lang='en' class='entry'>
+    <header class='entry-header'>
+  <div class='entry-info'>
+    <h1 class='entry-title title'>Add eslint to rails 5.1</h1>
+    
+  </div>
+  
+<div class='meta'>
+  <span class='posted-on'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+
+    <span class='screen-reader'>Posted on </span>
+    <time class='date' datetime='2017-08-06T12:47:15&#43;02:00'>6087, Aug 6</time>
+  </span>
+  
+  <span class='byline'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
+  <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
+  
+</svg>
+
+    <span class='screen-reader'> by </span>
+    Christoph Lipautz
+  </span>
+  
+</div>
+
+
+</header>
+
+    <div class='entry-content'>
+  
+
+<p>JavaScript is trending and on its very fast paced run creating new projects,
+concepts and ideas, best practices, throwing everything away again and start
+from scratch. That is a very good thing and for good we have now pretty neat
+tools that take away the very complex work of setting up a new project, keeping
+us left with a few nuts and bolts to configure on a higher level. A great tool
+handling a complex JavaScript projects is a module bundler named <a href="https://webpack.github.io/" title="Webpack takes modules with dependencies and generates static assets representing those modules.">webpack</a>.
+With the rails extension <a href="https://github.com/rails/webpacker" title="JavaScript pre-processor for rails using webpack.">webpacker</a>, that magic thing is connected to rails,
+with 5.1 shipped with the framework itself, and further containing
+pre-configurations for widely used libraries like vue, react or elm.</p>
+
+<p>As the hard work of finding a nice integration and structure was already done
+by our community friends, all we&rsquo;ve left to do is to extend the webpacker
+configuration. Let&rsquo;s have a look into a quick step by step setup.</p>
+
+<p>Create a demonstrational rails project, using <a href="&quot;https://facebook.github.io/react/&quot;" title="A JavaScript library for building user interfaces.">React</a> and add eslint to our
+JavaScript packages. The loader package is the glue between webpack and eslint.</p>
+
+<pre><code class="language-sh">$ rails --version # Rails 5.1.3
+$ rails new eslint-rails --webpack=react # Create a rails + react project
+$ cd eslint-rails
+$ yarn add -D eslint eslint-loader eslint-plugin-react # Add JS dev packages
+$ yarn run eslint -- --init # Run the eslint setup
+</code></pre>
+
+<p>The setup is pretty fancy, I&rsquo;ll guess it should be fine if you simply choose to
+make eslint inspect your files and use <code>app/javascript</code> as target path. For a
+react setup I&rsquo;d use ECMAScript 6 fetures, ES6 modules, run code in Browser, use
+no CommonJS, use JSX and use React.</p>
+
+<p>Lets now add a webpack loader by simply storing a new file in the rails config.</p>
+
+<pre><code class="language-JavaScript">// config/webpack/loaders/eslint.js
+const { env } = require('../configuration.js')
+
+module.exports = {
+  enforce: 'pre',
+  test: /\.(js|jsx)$/i,
+  exclude: /node_modules/,
+  loader: 'eslint-loader',
+  options: {
+    failOnError: env.NODE_ENV !== 'production'
+  }
+}
+</code></pre>
+
+<p>As a last step, add a run task in the <code>package.json</code> file, in order to provide
+a way to run eslint with a simple call to provide a command for any CI running
+your project, to be run with <code>yarn run lint</code>.</p>
+
+<pre><code class="language-json">// package.json
+{
+  // ...
+  },
+  &quot;scripts&quot;: {
+    &quot;lint&quot;: &quot;yarn run eslint -- --ext .js --ext .jsx app/javascript&quot;
+  }
+}
+</code></pre>
+
+<p>Now start the webpack development server using the binary generated in the
+rails setup process and you are ready to go.</p>
+
+<pre><code class="language-sh">$ ./bin/webpack-dev-server # start the webpack dev server
+</code></pre>
+
+<h2 id="apply-fine-tuning-to-a-react-eslint-configuration">Apply Fine Tuning to a React Eslint Configuration</h2>
+
+<p>And there it goes, the <code>app/javascript/packs/hello_react.jsx</code> is out-of-the-box
+not fine for eslint. To fix the Syntax remove the obsolete second comma <code>,</code> in
+the appendChild line. This will result in a lot of different other errors but
+at least eslint considers the JavaScript now to be valid. Lets fix it tough.</p>
+
+<p>Lets use the react recommended rules configuration by adapting the
+.eslintrc.json file, and deactivate some not so useful rules there. Then
+restart the server.</p>
+
+<pre><code class="language-JavaScript">// .eslintrc.json
+module.exports = {
+  // ...
+  &quot;extends&quot;: [
+    &quot;eslint:recommended&quot;,
+    &quot;plugin:react/recommended&quot;
+  ],
+  // ...
+  &quot;arrow-parens&quot;: [
+    &quot;error&quot;,
+    &quot;as-needed&quot;
+  ],
+  // ...
+  &quot;indent&quot;: &quot;off&quot;,
+  &quot;indent-legacy&quot;: &quot;off&quot;,
+  // ...
+  &quot;sort-imports&quot;: &quot;off&quot;,
+  // ...
+  &quot;no-extra-parens&quot;: &quot;off&quot;,
+  // ...
+  &quot;object-curly-newline&quot;: &quot;off&quot;,
+  // ...
+  &quot;quote-props&quot;: &quot;off&quot;,
+  // ...
+  &quot;padded-blocks&quot;: &quot;off&quot;,
+  // ...
+}
+</code></pre>
+
+<h2 id="about-linting-your-javascript">About Linting your JavaScript</h2>
+
+<p>As you are using rails, I suppose you have a great understanding of testing and
+probably also use a static analyzer for ruby (and rails) like <a href="https://github.com/bbatsov/rubocop" title="A Ruby static code analyzer, based on the community Ruby style guide.">rubocop</a>. Eslint
+is a great tool to analyze your code, avoid making common mistake, follow best
+practices and sticking to coding standards. This will make your code cleaner
+and improve readability especially to developers who follow the same rules.</p>
+
+<p>The rules provided by eslint can be very helpful, but on another hand side very
+restrictive. Ensure you feel comfortable and, read carefully through the
+<a href="http://eslint.org/docs/rules/">extensive and very nice rules documentations</a>,
+and deceide rules that often popup if it make sense to throw an error (should
+never happen), should show a warning (okay if it stays temporary in
+development, but has to be cleaned up at some time) or be deactivated
+completly.</p>
+
+<h2 id="rails-and-javascript-is-awesome">Rails and JavaScript is Awesome</h2>
+
+<p>A good friend of mine and former colleague told me, he is happy about the step
+forward that the rails community did with embracing JavaScript and binding it
+that deep into the well known web frameworks core. Nothing to add there. On a
+long view back in the history of web development, JavaScript was always
+something nasty that required fallbacks, therefore redundancy, and widely
+misused by frontend developers, not used by backend developers. For quite a
+long time now this totally changed, even the gap between frontend and backend
+is getting smaller and smaller. Good choice therefore sticking that close to
+the cool new stuff, and making it a huge part in rails. I love ruby, ruby on
+rails and JavaScript!</p>
+
+</div>
+
+    
+<footer class='entry-footer'>
+  
+    
+  
+    
+  
+</footer>
+
+
+  </article>
+
+  
+
+  
+    <div class='comments-container'>
+  
+</div>
+
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        
+
+        <div class='copyright'>
+          <p>©2017 Christoph Lipautz, any code snippet is free to use, licensed under cc by-sa 3.0</p>
+
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src='/blog/js/main.af838dd5.js'></script>
+  
+
+</body>
+
+</html>
+
