@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on unused Blog on GitHub</title>
+    <link>http://unused.github.io/blog/</link>
+    <description>Recent content in Home on unused Blog on GitHub</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>©2017 Christoph Lipautz, any code snippet is free to use, licensed under cc by-sa 3.0</copyright>
+    <lastBuildDate>Sun, 06 Aug 2017 12:47:15 +0200</lastBuildDate>
+    
+	<atom:link href="http://unused.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Add eslint to rails 5.1</title>
+      <link>http://unused.github.io/blog/posts/eslint-rails/</link>
+      <pubDate>Sun, 06 Aug 2017 12:47:15 +0200</pubDate>
+      
+      <guid>http://unused.github.io/blog/posts/eslint-rails/</guid>
+      <description>JavaScript is trending and on its very fast paced run creating new projects, concepts and ideas, best practices, throwing everything away again and start from scratch. That is a very good thing and for good we have now pretty neat tools that take away the very complex work of setting up a new project, keeping us left with a few nuts and bolts to configure on a higher level. A great tool handling a complex JavaScript projects is a module bundler named webpack.</description>
+    </item>
+    
+  </channel>
+</rss>
