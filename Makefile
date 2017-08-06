@@ -13,7 +13,7 @@ setup:
 		git clone https://github.com/MunifTanjim/minimo themes/minimo
 
 build:
-	$(CMD) && "Public build `date -u`"
+	$(CMD) && git ci -m "Public build `date -u`" public/
 
 deploy:
 	git subtree push --prefix public origin gh-pages
