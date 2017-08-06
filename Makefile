@@ -16,5 +16,6 @@ build:
 	$(CMD) && git ci -m "Public build `date -u`" public/
 
 deploy:
-	git subtree push --prefix public origin gh-pages
+	git push origin master && \
+		git subtree push --prefix public origin gh-pages
 
