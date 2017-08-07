@@ -30,7 +30,7 @@ $ yarn run eslint -- --init # Run the eslint setup
 
 The setup is pretty fancy, I'll guess it should be fine if you simply choose to
 make eslint inspect your files and use `app/javascript` as target path. For a
-react setup I'd use ECMAScript 6 fetures, ES6 modules, run code in Browser, use
+react setup I'd use ECMAScript 6 features, ES6 modules, run code in Browser, use
 no CommonJS, use JSX and use React.
 
 Lets now add a webpack loader by simply storing a new file in the rails config.
