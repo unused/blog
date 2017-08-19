@@ -13,7 +13,10 @@ setup:
 		git clone https://github.com/MunifTanjim/minimo themes/minimo
 
 build:
-	$(CMD) && git ci -m "Public build `date -u`" public/
+	$(CMD) && \
+		git reset . && \
+		git add public/ && \
+		git ci -m "Public build `date -u`"
 
 deploy:
 	git push origin master && \
