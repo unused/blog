@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>©2017 Christoph Lipautz, any code snippet is free to use, licensed under cc by-sa 3.0</copyright>
-    <lastBuildDate>Sun, 06 Aug 2017 12:47:15 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Aug 2017 09:40:51 +0200</lastBuildDate>
     
 	<atom:link href="http://unused.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Short Words on Continuous Deployments</title>
+      <link>http://unused.github.io/blog/posts/continuous-deployments/</link>
+      <pubDate>Sat, 19 Aug 2017 09:40:51 +0200</pubDate>
+      
+      <guid>http://unused.github.io/blog/posts/continuous-deployments/</guid>
+      <description>Planning and maintaining continuous integration can be tough. Keep it stable, handle multiple projects, environments, build scenarios, and in some bad cases private dependencies. With the following post I&amp;rsquo;d like to share some experience from lessons learned when dealing with continuous integrations and deployments specifically.
+TL;DR
+ Build your own test container image. Keep any output. Extend output by environment info. Setup ssh and inject key in before script. Build you own docker deployment image.</description>
+    </item>
     
     <item>
       <title>Add eslint to rails 5.1</title>
