@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='TL;DR Lets create a blog powered by hugo static site generator hosted on gitlab pages with a custom https domain registered at zeit.co and letsencrypt for free.
+Some Details As christmas present on 24th of December 2016 GitLab brought GitLab pages to the community edition. Those are static files served by a golang webserver. To trigger an update one enables continuous integration using a .gitlab.yml file containing a recipe that will result in collecting certain assets, so called artefacts, in a pipeline conventionally named &ldquo;pages&rdquo;.'>
+
+<meta property='og:title' content='Create an awesome gitlab blog from zero to 💯 • Christoph Lipautz'>
+<meta property='og:description' content='TL;DR Lets create a blog powered by hugo static site generator hosted on gitlab pages with a custom https domain registered at zeit.co and letsencrypt for free.
+Some Details As christmas present on 24th of December 2016 GitLab brought GitLab pages to the community edition. Those are static files served by a golang webserver. To trigger an update one enables continuous integration using a .gitlab.yml file containing a recipe that will result in collecting certain assets, so called artefacts, in a pipeline conventionally named &ldquo;pages&rdquo;.'>
+<meta property='og:url' content='http://unused.github.io/blog/posts/gitlab-blog/'>
+<meta property='og:site_name' content='unused Blog on GitHub'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2017-10-21T20:57:11&#43;02:00'/><meta property='article:modified_time' content='2017-10-21T20:57:11&#43;02:00'/>
+
+<meta name="generator" content="Hugo 0.25.1" />
+
+  <title>Create an awesome gitlab blog from zero to 💯 • Christoph Lipautz</title>
+  <link rel='canonical' href='http://unused.github.io/blog/posts/gitlab-blog/'>
+  
+  <link rel='icon' href='/blog/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='/blog/css/main.d02777fd.css'>
+
+
+
+</head>
+
+
+<body class='page'>
+  <div class='site'>
+    <header id='header' class='header-container'>
+      <div class='site-header'>
+        <nav id='navmenu' aria-label='Main Menu'>
+  <ul class='main-menu'>
+    
+    <li>
+      <a href='/blog/' 
+        
+      >Home</a>
+    </li>
+    
+  </ul>
+</nav>
+
+        <div class='site-info'>
+          
+          <p class='site-title title'>unused Blog on GitHub</p>
+          
+          <p class='site-description'>Posts about Linux, (web) development, and other stuff.</p>
+        </div>
+      </div>
+    </header>
+
+
+<main class='main'>
+  <article lang='en' class='entry'>
+    <header class='entry-header'>
+  <div class='entry-info'>
+    <h1 class='entry-title title'>Create an awesome gitlab blog from zero to 💯</h1>
+    
+  </div>
+  
+<div class='meta'>
+  <span class='posted-on'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+
+    <span class='screen-reader'>Posted on </span>
+    <time class='date' datetime='2017-10-21T20:57:11&#43;02:00'>21107, Aug 6</time>
+  </span>
+  
+  <span class='byline'>
+    <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M21,21V20c0-2.76-4-5-9-5s-9,2.24-9,5v1"/>
+  <path d="M16,6.37A4,4,0,1,1,12.63,3,4,4,0,0,1,16,6.37Z"/>
+  
+</svg>
+
+    <span class='screen-reader'> by </span>
+    Christoph Lipautz
+  </span>
+  
+  
+</div>
+
+
+</header>
+
+    <div class='entry-content'>
+  
+
+<p><strong>TL;DR</strong> Lets create a blog powered by <a href="&quot;https://gohugo.io/&quot;" title="Hugo open-source static site generator">hugo static site generator</a> hosted on
+<a href="&quot;https://about.gitlab.com/features/pages/&quot;" title="GitLab Pages">gitlab pages</a> with a custom https domain registered at
+<a href="&quot;https://zeit.co/&quot;" title="Serverless Hosting Platform">zeit.co</a> and <a href="&quot;https://letsencrypt.org/&quot;" title="Let's Encrypt CA">letsencrypt</a> for free.</p>
+
+<h2 id="some-details">Some Details</h2>
+
+<p>As christmas present on 24th of December 2016 GitLab brought GitLab pages to
+the community edition. Those are static files served by a golang webserver. To
+trigger an update one enables continuous integration using a <code>.gitlab.yml</code> file
+containing a recipe that will result in collecting certain assets, so called
+artefacts, in a pipeline conventionally named &ldquo;pages&rdquo;. The corresponding
+website to be found at <code>https://&lt;username-or-namespace&gt;.gitlab.io/&lt;project&gt;/</code>.
+A domain for this website can be configured in the settings. If none is
+available zeit.co is a pretty nice and nerdy hoster, offering an api that can
+be controlled using an official JavaScript cli tool called <code>now</code>. With <code>now</code> we
+can quickly register a new domain - costs about <strong>15$</strong> for a <em>.com</em> domain -
+and further create a HTTPS certificate for free using let&rsquo;s encrypt.</p>
+
+<h2 id="build-a-blog">Build a Blog</h2>
+
+<p><em>The following gives a brief step-to-step tutorial, if something is not working
+as expected <a href="&quot;https://github.com/unused/blog/issues&quot;" title="Unused Blog Issues">please leave me a message</a>.</em></p>
+
+<ul>
+<li>Create a new project on [GitLab][gitlab].</li>
+<li><a href="&quot;https://gohugo.io/getting-started/installing/&quot;" title="Hugo Install">Install hugo</a>, it might be already available on your linux
+machine, check <code>dnf install hugo</code>, <code>apt-get install hugo</code>, <code>apk install
+hugo</code>, download the executeables directly, build the gocode or use one of the
+many available docker container - mine is at <code>docker.io/unused/hugo</code>.</li>
+<li>Start a new site using <code>hugo new site blog</code>.</li>
+<li>Download a theme and extracted it into the themes folder - as a reference you
+can use the <a href="&quot;https://themes.gohugo.io/minimo/&quot;" title="Minimo Hugo Theme">minimo-hugo-theme</a>. Adapt the <code>config.toml</code>
+file, set a minimum of theme to minimo and adapt the baseURL. You can find
+the projects pages url on GitLab in the project settings in the pages
+section.</li>
+<li>Init and update a local git repository with <code>git init &amp;&amp; git ci -am &quot;No time
+for proper git usage...&quot;. Please use a more appropriate message. Don't
+headstart with a bad history. Push the project to GitLab via</code>git push origin
+master`.</li>
+<li>One step to activate your pages, create a new file <code>.gitlab-ci.yml</code> using
+the GitLab web UI, then choose the predefined auto-template for <code>hugo</code>.
+Unfortunately the docker image used did not match the template requirements
+for the hugo version, on demand feel free to use my hugo image and replace
+the images used in the <code>.gitlab-ci.yml</code> with <code>unused/hugo</code>. <em>Let me know if
+it is out of date.</em></li>
+<li>If you want to register your domain at zeit.co, go there, create an account
+or log in and add your payment details. Afterwards get the tool using
+<code>npm i -g now</code> or use yarn if you prefer it.</li>
+<li>Execute <code>now domain buy DOMAIN.com</code> to buy a new domain.</li>
+<li>Execute <code>now dns add DOMAIN.com @ A 52.167.214.135</code> to point your domain on
+the official GitLab public IP address. If you setup the domain now in the
+gitlab project settings, your website will already be available on the HTTP
+version of your address.</li>
+<li>Finally create a certificate for the domain with the letsencrypt auto tool,
+first <code>git clone https://github.com/letsencrypt/letsencrypt</code>, then execute
+<code>./letsencrypt-auto certonly -a manual -d DOMAIN.com</code> and follow the
+instructions. You will be asked to create a file on your webhost. Simply
+create the file with described content in the <code>static/</code> directory of your
+hugo repository and push it. It should be available as soon as the pipeline
+is processed successfully - check the jobs section of your GitLab project.</li>
+<li>As last step update the GitLab project settings, remove the domain and create
+a new one now also using the fullchain.pem and private.pem keys in your
+configuration. Have fun!</li>
+</ul>
+
+</div>
+
+    
+<footer class='entry-footer'>
+  
+    
+  
+    
+  
+</footer>
+
+
+  </article>
+
+  
+    
+<nav class='entry-nav'>
+  <div class='entry-nav-links'><div class='prev-entry'>
+      <a href='http://unused.github.io/blog/posts/continuous-deployments/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Short Words on Continuous Deployments</a>
+    </div></div>
+</nav>
+
+
+  
+
+  
+    <div class='comments-container'>
+  
+</div>
+
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'></ul>
+  </nav>
+</div>
+
+        <div class='copyright'>
+          <p>
+  &copy; 2017 Christoph Lipautz</p>
+
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src='/blog/js/main.af838dd5.js'></script>
+  
+
+</body>
+
+</html>
+

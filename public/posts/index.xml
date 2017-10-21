@@ -6,11 +6,20 @@
     <description>Recent content in Posts on unused Blog on GitHub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>©2017 Christoph Lipautz, any code snippet is free to use, licensed under cc by-sa 3.0</copyright>
-    <lastBuildDate>Sat, 19 Aug 2017 09:40:51 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 21 Oct 2017 20:57:11 +0200</lastBuildDate>
     
 	<atom:link href="http://unused.github.io/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Create an awesome gitlab blog from zero to 💯</title>
+      <link>http://unused.github.io/blog/posts/gitlab-blog/</link>
+      <pubDate>Sat, 21 Oct 2017 20:57:11 +0200</pubDate>
+      
+      <guid>http://unused.github.io/blog/posts/gitlab-blog/</guid>
+      <description>TL;DR Lets create a blog powered by hugo static site generator hosted on gitlab pages with a custom https domain registered at zeit.co and letsencrypt for free.
+Some Details As christmas present on 24th of December 2016 GitLab brought GitLab pages to the community edition. Those are static files served by a golang webserver. To trigger an update one enables continuous integration using a .gitlab.yml file containing a recipe that will result in collecting certain assets, so called artefacts, in a pipeline conventionally named &amp;ldquo;pages&amp;rdquo;.</description>
+    </item>
     
     <item>
       <title>Short Words on Continuous Deployments</title>
