@@ -3,14 +3,10 @@ CMD=hugo
 
 all: build deploy
 
-.PHONY: watch setup build deploy
+.PHONY: watch build deploy
 
 watch:
 	$(CMD) server -D
-
-setup:
-	git@github.com:unused/blog.git && \
-		git clone https://github.com/MunifTanjim/minimo themes/minimo
 
 build:
 	$(CMD) && \
