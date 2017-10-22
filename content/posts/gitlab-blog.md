@@ -66,10 +66,10 @@ as expected [please leave me a message][issues].*
   a new one now also using the fullchain.pem and private.pem keys in your
   configuration. Have fun!
 
-[zeit]: "https://zeit.co/" "Serverless Hosting Platform"
-[gitlab-pages]: "https://about.gitlab.com/features/pages/" "GitLab Pages"
-[hugo]: "https://gohugo.io/" "Hugo open-source static site generator"
-[hugo-install]: "https://gohugo.io/getting-started/installing/" "Hugo Install"
-[letsencrypt]: "https://letsencrypt.org/" "Let's Encrypt CA"
-[minimo-hugo-theme]: "https://themes.gohugo.io/minimo/" "Minimo Hugo Theme"
-[issues]: "https://github.com/unused/blog/issues" "Unused Blog Issues"
+[zeit]: https://zeit.co/ "Serverless Hosting Platform"
+[gitlab-pages]: https://about.gitlab.com/features/pages/ "GitLab Pages"
+[hugo]: https://gohugo.io/ "Hugo open-source static site generator"
+[hugo-install]: https://gohugo.io/getting-started/installing/ "Hugo Install"
+[letsencrypt]: https://letsencrypt.org/ "Let's Encrypt CA"
+[minimo-hugo-theme]: https://themes.gohugo.io/minimo/ "Minimo Hugo Theme"
+[issues]: https://github.com/unused/blog/issues "Unused Blog Issues"
