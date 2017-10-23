@@ -14,17 +14,17 @@ TL;DR
   - Build your own test container image.
   - Keep any output.
   - Extend output by environment info.
-  - Setup ssh and inject key in before script.
+  - Setup ssh and inject key in the before script section.
   - Build you own docker deployment image.
 
 Recently a friend asked me on some advise to setup continuous integration
-using [gitlab], that's why I'll stick to gitlab for this post, things will be
-very similar for any other environment.
+using [GitLab][gitlab], that's why I'll stick to gitlab for this post, things
+will be very similar for any other environment.
 
 Firsty first it does not make sense to install libraries, drivers or tools in a
 script when you use containers running your software. Build your own test
 image, that's super easy with docker. You can then host it on docker-hub or
-even in your own gitlabs registry.
+even in your own GitLabs registry.
 
 Don't suppress any output when running a job. It will not harm to have lots of
 output whereas help you when something goes wrong.
@@ -36,15 +36,15 @@ good starting point at comparing those values.
 
 To connect to some remote machine inside your docker instance, simply configure
 an SSH client. Same as you would do on any development machine. There's [a
-documented way how gitlab recommends to do](gitlab-ci-ssh), that I'd say is the
+documented way how gitlab recommends to do][gitlab-ci-ssh], that I'd say is the
 simplest way of doing. You have to generate some ssh-key, put the public key on
 your target machine and put the private one in the gitlab project (or group)
 secret variables. For sure this is a deployment access, so it should have its
-own user with limited rights on the target. For sure it will make sense to
-also build your own deployment image, for several reasons: Keep it small (e.g.
-use an alpine image and just add ssh), keep it secure (know exactly what is
-executed on this box), keep it fast (smaller is faster), keep it stable (don't
-make your deployment fail just because someone updated an image).
+own user with limited rights on the target. Also it will make sense to build
+your own deployment image, for several reasons: Keep it small (e.g.  use an
+alpine image and just add ssh), keep it secure (know exactly what is executed
+on this box), keep it fast (smaller is faster), keep it stable (don't make your
+deployment fail just because someone updated an image).
 
 [gitlab]: https://about.gitlab.com/
 [gitlab-ci-ssh]: https://docs.gitlab.com/ee/ci/ssh_keys/README.html
