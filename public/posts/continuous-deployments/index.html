@@ -6,12 +6,12 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <meta name='description' content='Planning and maintaining continuous integration can be tough. Keep it stable, handle multiple projects, environments, build scenarios, and in some bad cases private dependencies. With the following post I&rsquo;d like to share some experience from lessons learned when dealing with continuous integrations and deployments specifically.
 TL;DR
- Build your own test container image. Keep any output. Extend output by environment info. Setup ssh and inject key in before script. Build you own docker deployment image.'>
+ Build your own test container image. Keep any output. Extend output by environment info. Setup ssh and inject key in the before script section.'>
 
 <meta property='og:title' content='Short Words on Continuous Deployments • Christoph Lipautz'>
 <meta property='og:description' content='Planning and maintaining continuous integration can be tough. Keep it stable, handle multiple projects, environments, build scenarios, and in some bad cases private dependencies. With the following post I&rsquo;d like to share some experience from lessons learned when dealing with continuous integrations and deployments specifically.
 TL;DR
- Build your own test container image. Keep any output. Extend output by environment info. Setup ssh and inject key in before script. Build you own docker deployment image.'>
+ Build your own test container image. Keep any output. Extend output by environment info. Setup ssh and inject key in the before script section.'>
 <meta property='og:url' content='http://unused.github.io/blog/posts/continuous-deployments/'>
 <meta property='og:site_name' content='unused Blog on GitHub'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2017-08-19T09:40:51&#43;02:00'/><meta property='article:modified_time' content='2017-08-19T09:40:51&#43;02:00'/>
@@ -110,18 +110,18 @@ specifically.</p>
 <li>Build your own test container image.</li>
 <li>Keep any output.</li>
 <li>Extend output by environment info.</li>
-<li>Setup ssh and inject key in before script.</li>
+<li>Setup ssh and inject key in the before script section.</li>
 <li>Build you own docker deployment image.</li>
 </ul>
 
 <p>Recently a friend asked me on some advise to setup continuous integration
-using <a href="https://about.gitlab.com/">gitlab</a>, that&rsquo;s why I&rsquo;ll stick to gitlab for this post, things will be
-very similar for any other environment.</p>
+using <a href="https://about.gitlab.com/">GitLab</a>, that&rsquo;s why I&rsquo;ll stick to gitlab for this post, things
+will be very similar for any other environment.</p>
 
 <p>Firsty first it does not make sense to install libraries, drivers or tools in a
 script when you use containers running your software. Build your own test
 image, that&rsquo;s super easy with docker. You can then host it on docker-hub or
-even in your own gitlabs registry.</p>
+even in your own GitLabs registry.</p>
 
 <p>Don&rsquo;t suppress any output when running a job. It will not harm to have lots of
 output whereas help you when something goes wrong.</p>
@@ -132,16 +132,16 @@ infos about your environment. E.g. output a <code>ruby --version</code>,
 good starting point at comparing those values.</p>
 
 <p>To connect to some remote machine inside your docker instance, simply configure
-an SSH client. Same as you would do on any development machine. There&rsquo;s <a href="gitlab-ci-ssh">a
+an SSH client. Same as you would do on any development machine. There&rsquo;s <a href="https://docs.gitlab.com/ee/ci/ssh_keys/README.html">a
 documented way how gitlab recommends to do</a>, that I&rsquo;d say is the
 simplest way of doing. You have to generate some ssh-key, put the public key on
 your target machine and put the private one in the gitlab project (or group)
 secret variables. For sure this is a deployment access, so it should have its
-own user with limited rights on the target. For sure it will make sense to
-also build your own deployment image, for several reasons: Keep it small (e.g.
-use an alpine image and just add ssh), keep it secure (know exactly what is
-executed on this box), keep it fast (smaller is faster), keep it stable (don&rsquo;t
-make your deployment fail just because someone updated an image).</p>
+own user with limited rights on the target. Also it will make sense to build
+your own deployment image, for several reasons: Keep it small (e.g.  use an
+alpine image and just add ssh), keep it secure (know exactly what is executed
+on this box), keep it fast (smaller is faster), keep it stable (don&rsquo;t make your
+deployment fail just because someone updated an image).</p>
 
 </div>
 

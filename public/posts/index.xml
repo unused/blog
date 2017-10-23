@@ -17,8 +17,9 @@
       <pubDate>Sat, 21 Oct 2017 20:57:11 +0200</pubDate>
       
       <guid>http://unused.github.io/blog/posts/gitlab-blog/</guid>
-      <description>TL;DR Lets create a blog powered by hugo static site generator hosted on gitlab pages with a custom https domain registered at zeit.co and letsencrypt for free.
-Some Details As christmas present on 24th of December 2016 GitLab brought GitLab pages to the community edition. Those are static files served by a golang webserver. To trigger an update one enables continuous integration using a .gitlab.yml file containing a recipe that will result in collecting certain assets, so called artefacts, in a pipeline conventionally named &amp;ldquo;pages&amp;rdquo;.</description>
+      <description>TL;DR Lets create a blog powered by hugo static site generator hosted on gitlab pages with a custom HTTPS domain registered at zeit.co and letsencrypt for free.
+skip to action
+Some Details As christmas present on 24th of December 2016 GitLab brought a new feature called GitLab pages to the community edition. This features offers to use static files and serve them by using a golang webserver. To trigger an update one enables the GitLab continuous integration using a .</description>
     </item>
     
     <item>
@@ -29,7 +30,7 @@ Some Details As christmas present on 24th of December 2016 GitLab brought GitLab
       <guid>http://unused.github.io/blog/posts/continuous-deployments/</guid>
       <description>Planning and maintaining continuous integration can be tough. Keep it stable, handle multiple projects, environments, build scenarios, and in some bad cases private dependencies. With the following post I&amp;rsquo;d like to share some experience from lessons learned when dealing with continuous integrations and deployments specifically.
 TL;DR
- Build your own test container image. Keep any output. Extend output by environment info. Setup ssh and inject key in before script. Build you own docker deployment image.</description>
+ Build your own test container image. Keep any output. Extend output by environment info. Setup ssh and inject key in the before script section.</description>
     </item>
     
     <item>
